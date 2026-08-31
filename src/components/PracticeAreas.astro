@@ -1,0 +1,131 @@
+---
+const areas = [
+    { num: "01", title: "Derecho Civil", desc: "Litigios complejos, contratos, usucapión y responsabilidad civil. Protegemos su patrimonio con estrategias blindadas ante cualquier eventualidad legal." },
+    { num: "02", title: "Derecho Laboral", desc: "Defensa integral, despidos, ART y accidentes de trabajo. Exigimos la máxima compensación y el respeto absoluto por sus derechos como trabajador." },
+    { num: "03", title: "Derecho Penal", desc: "Defensa penal, excarcelaciones y asistencia en detenciones (24hs). Intervención inmediata para garantizar su libertad y el debido proceso." },
+    { num: "04", title: "Sucesiones", desc: "Planificación patrimonial y procesos sucesorios ágiles. Resolvemos conflictos entre herederos asegurando una transmisión de bienes rápida y transparente." },
+    { num: "05", title: "Derecho de Familia", desc: "Divorcios, alimentos y régimen de comunicación. Abordaje confidencial y resolutivo para proteger la integridad de su círculo familiar." }
+];
+---
+<section class="bg-slate-950 py-32 px-6 lg:px-12 border-b border-white/5" id="especialidades">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Cabecera de Sección -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="w-10 h-[1px] bg-slate-600"></span>
+                    <span class="text-slate-400 tracking-[0.25em] uppercase text-[9px] font-bold">
+                        Áreas de Práctica
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-serif text-white leading-tight">
+                    Especialización <br/>
+                    <span class="italic text-slate-500 font-light">sin distracciones.</span>
+                </h2>
+            </div>
+            <p class="text-slate-400 text-sm font-light leading-relaxed max-w-sm md:text-right">
+                Abordamos cada caso con un equipo hiperespecializado, garantizando una estrategia legal sólida y resultados concretos.
+            </p>
+        </div>
+
+        <!-- Acordeón Interactivo -->
+        <div class="border-t border-slate-800/60 accordion-container">
+            {areas.map((area) => (
+                <div class="accordion-item group border-b border-slate-800/60 hover:bg-slate-900/30 transition-colors duration-500">
+                    
+                    <!-- Botón disparador (Trigger) -->
+                    <button class="accordion-trigger w-full flex items-center justify-between py-8 md:py-10 text-left cursor-pointer focus:outline-none">
+                        
+                        <div class="flex items-center gap-6 md:gap-12 w-full">
+                            <span class="text-slate-700 font-serif text-2xl md:text-3xl font-light group-hover:text-slate-500 transition-colors duration-500 w-12 shrink-0">
+                                {area.num}.
+                            </span>
+                            <h3 class="accordion-title text-2xl md:text-4xl font-serif text-slate-300 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                                {area.title}
+                            </h3>
+                        </div>
+                        
+                        <!-- Ícono + que se convierte en X -->
+                        <div class="shrink-0 ml-4">
+                            <div class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center group-hover:border-slate-400 transition-colors duration-500">
+                                <svg class="accordion-icon w-4 h-4 text-slate-400 transition-transform duration-500 ease-[cubic-bezier(0.87,_0,_0.13,_1)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                    </button>
+                    
+                    <!-- Contenedor Desplegable (Truco CSS Grid 0fr a 1fr) -->
+                    <div class="accordion-content grid transition-all duration-500 ease-[cubic-bezier(0.87,_0,_0.13,_1)]" style="grid-template-rows: 0fr;">
+                        <div class="overflow-hidden">
+                            <!-- El padding left se alinea con el título (salta el número) -->
+                            <div class="pb-8 md:pb-10 pl-[4.5rem] md:pl-[5.5rem] flex flex-col md:flex-row md:items-end justify-between gap-6 opacity-0 translate-y-4 transition-all duration-500 ease-out accordion-text">
+                                <p class="text-slate-400 text-sm md:text-base font-light leading-relaxed max-w-2xl">
+                                    {area.desc}
+                                </p>
+                                
+                                <a href="#contacto" class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white hover:text-slate-300 transition-colors pb-1 border-b border-slate-600 hover:border-slate-400 w-fit">
+                                    Consultar Área
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Lógica del Acordeón con animaciones fluidas
+    document.addEventListener('astro:page-load', () => {
+        const triggers = document.querySelectorAll('.accordion-trigger');
+        
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.accordion-item');
+                const content = item?.querySelector('.accordion-content') as HTMLElement;
+                const icon = item?.querySelector('.accordion-icon') as HTMLElement;
+                const text = item?.querySelector('.accordion-text') as HTMLElement;
+                const title = item?.querySelector('.accordion-title') as HTMLElement;
+                
+                const isActive = item?.classList.contains('is-active');
+
+                // Opcional: Cerrar los demás al abrir uno nuevo (estilo estricto)
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    otherItem.classList.remove('is-active');
+                    const otherContent = otherItem.querySelector('.accordion-content') as HTMLElement;
+                    const otherIcon = otherItem.querySelector('.accordion-icon') as HTMLElement;
+                    const otherText = otherItem.querySelector('.accordion-text') as HTMLElement;
+                    const otherTitle = otherItem.querySelector('.accordion-title') as HTMLElement;
+                    
+                    if(otherContent) otherContent.style.gridTemplateRows = '0fr';
+                    if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    if(otherText) {
+                        otherText.classList.remove('opacity-100', 'translate-y-0');
+                        otherText.classList.add('opacity-0', 'translate-y-4');
+                    }
+                    if(otherTitle) otherTitle.classList.remove('text-white');
+                });
+
+                // Si no estaba activo, lo abrimos
+                if (!isActive && item && content && icon && text && title) {
+                    item.classList.add('is-active');
+                    content.style.gridTemplateRows = '1fr';
+                    icon.style.transform = 'rotate(45deg)'; // El "+" se hace una "x"
+                    title.classList.add('text-white');
+                    
+                    // Pequeño delay para que el texto aparezca suave después de desplegar
+                    setTimeout(() => {
+                        text.classList.remove('opacity-0', 'translate-y-4');
+                        text.classList.add('opacity-100', 'translate-y-0');
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>

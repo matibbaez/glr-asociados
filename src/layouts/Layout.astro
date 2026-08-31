@@ -1,0 +1,79 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="G.L.R. Asociados - Asistencia Jurídica Integral en Civil, Laboral, Sucesiones, Familia y Penal." />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body class="bg-slate-950 text-slate-100 antialiased selection:bg-slate-800 selection:text-white pt-0 flex flex-col min-h-screen">
+        
+        <slot />
+
+        <!-- LA OPCIÓN NUCLEAR: Motor de Lenis crudo para el Scroll Premium -->
+        <script is:inline src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+        <script is:inline>
+            let lenis;
+
+            document.addEventListener('astro:page-load', () => {
+                // 1. Matamos la instancia previa si existe para evitar duplicados en Astro
+                if (lenis) {
+                    lenis.destroy();
+                }
+
+                // 2. Inicializamos Lenis
+                lenis = new window.Lenis({
+                    duration: 1.2,
+                    smoothWheel: true
+                });
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+
+                requestAnimationFrame(raf);
+
+                // 3. LA MAGIA: Interceptamos los clics en los enlaces del menú
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault(); // Evitamos el salto seco nativo de HTML
+                        
+                        const targetId = this.getAttribute('href');
+                        
+                        // Si el enlace es solo "#" (ej. el logo), vamos arriba de todo
+                        if (targetId === '#') {
+                            lenis.scrollTo(0, { duration: 1.5 });
+                            return;
+                        }
+
+                        // Buscamos la sección destino
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            // Hacemos que Lenis viaje hasta la sección con un margen de -100px para que el Navbar no tape el título
+                            lenis.scrollTo(targetElement, { 
+                                offset: -100,
+                                duration: 1.5,
+                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Curva de aceleración súper suave
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

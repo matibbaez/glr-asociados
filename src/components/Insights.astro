@@ -1,0 +1,224 @@
+---
+const articles = [
+    {
+        id: "insight-laboral",
+        category: "Derecho Laboral",
+        title: "Despido sin causa: Todo lo que le corresponde por ley.",
+        excerpt: "Análisis detallado sobre indemnizaciones, preaviso y SAC proporcional. Conozca sus derechos ante una desvinculación arbitraria.",
+        readTime: "3 min de lectura",
+        content: [
+            "Cuando un empleador decide finalizar una relación laboral sin una causa justificada, la Ley de Contrato de Trabajo en Argentina establece mecanismos estrictos para proteger el patrimonio del trabajador.",
+            "El pilar fundamental es la indemnización por antigüedad, que equivale a un mes de sueldo por cada año de servicio o fracción mayor a tres meses. A esto debe sumarse la integración del mes de despido (si no se lo despidió el último día del mes), el pago de vacaciones no gozadas y el Sueldo Anual Complementario (SAC) proporcional.",
+            "Es crucial comprender que no debe firmar ningún documento, liquidación final ni acuerdo sin la revisión exhaustiva de un abogado laboralista. Muchas veces, las empresas omiten rubros clave, como multas por trabajo no registrado o mal registrado, que pueden duplicar o triplicar el monto final a percibir."
+        ]
+    },
+    {
+        id: "insight-penal",
+        category: "Derecho Penal",
+        title: "Detenciones policiales: Plazos y derechos fundamentales.",
+        excerpt: "¿Cuánto tiempo pueden demorarlo sin orden judicial? Los límites legales de la flagrancia y el rol del abogado defensor en las primeras 24 horas.",
+        readTime: "4 min de lectura",
+        content: [
+            "Las primeras horas tras una detención son el momento de mayor vulnerabilidad procesal. En la Provincia de Buenos Aires y CABA, las fuerzas de seguridad operan bajo límites temporales estrictos que no siempre se respetan en la práctica.",
+            "Sin una orden judicial, una persona solo puede ser detenida en situación de 'flagrancia' (cometiendo el delito o inmediatamente después). A partir de ese momento, el reloj empieza a correr. La ley exige que el fiscal sea notificado inmediatamente y el detenido sea puesto a disposición de un juez en un plazo no mayor a 24 horas (prorrogable por 24 horas más bajo circunstancias excepcionales).",
+            "Su derecho primordial es mantener silencio hasta entrevistarse en privado con su abogado defensor. La intervención inmediata de un especialista penal es determinante para solicitar excarcelaciones tempranas, controlar la legalidad del procedimiento y evitar la manipulación de pruebas en su contra."
+        ]
+    },
+    {
+        id: "insight-civil",
+        category: "Derecho Civil",
+        title: "Usucapión: Los requisitos para reclamar la titularidad.",
+        excerpt: "El proceso de prescripción adquisitiva paso a paso. Cómo transformar la posesión continua en un título de propiedad legítimo.",
+        readTime: "5 min de lectura",
+        content: [
+            "La prescripción adquisitiva, comúnmente conocida como usucapión, es el proceso legal mediante el cual una persona adquiere el dominio de un inmueble por haberlo poseído durante un tiempo prolongado, de manera continua y con el ánimo de ser su dueño.",
+            "Para que la acción prospere, la ley argentina exige probar la posesión ostensible y continua durante 20 años (usucapión larga). Esto significa que no basta con 'estar' en la propiedad; se deben demostrar actos posesorios claros, como el pago de impuestos, la realización de mejoras estructurales, el cerramiento del terreno o la instalación de servicios a su nombre.",
+            "En G.L.R. Asociados estructuramos el proceso de prueba de forma meticulosa, recopilando planos de mensura, testimonios y documentación histórica para asegurar que el juez dicte la sentencia que lo convierta definitivamente en el titular registral del inmueble."
+        ]
+    }
+];
+---
+<section class="bg-slate-950 py-32 px-6 lg:px-12 border-b border-white/5 relative overflow-hidden" id="novedades">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-slate-800/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        
+        <!-- Cabecera -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="w-10 h-[1px] bg-slate-600"></span>
+                    <span class="text-slate-400 tracking-[0.25em] uppercase text-[9px] font-bold">
+                        Divulgación Legal
+                    </span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-serif text-white leading-tight">
+                    Conocimiento que <br/>
+                    <span class="italic text-slate-500 font-light">protege sus derechos.</span>
+                </h2>
+            </div>
+            
+            <a href="#" class="hidden md:inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white hover:text-slate-300 transition-colors border-b border-slate-700 hover:border-slate-400 pb-1 w-fit">
+                Ver todas las publicaciones
+            </a>
+        </div>
+
+        <!-- Grilla de Artículos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {articles.map((article) => (
+                <article 
+                    class="insight-trigger group relative flex flex-col p-8 md:p-10 bg-slate-900/30 border border-slate-800 hover:border-slate-500 transition-all duration-500 rounded-sm cursor-pointer"
+                    data-target={article.id}
+                >
+                    
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left ease-out"></div>
+
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold bg-slate-950 px-3 py-1 border border-slate-800 rounded-sm group-hover:border-slate-600 transition-colors">
+                                {article.category}
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-xl md:text-2xl font-serif text-slate-200 mb-4 group-hover:text-white transition-colors duration-500">
+                            {article.title}
+                        </h3>
+                        
+                        <p class="text-slate-500 text-sm font-light leading-relaxed mb-10 group-hover:text-slate-400 transition-colors duration-500">
+                            {article.excerpt}
+                        </p>
+                        
+                        <div class="mt-auto flex items-center justify-between border-t border-slate-800/60 pt-6">
+                            <span class="text-[10px] text-slate-600 font-medium group-hover:text-slate-400 transition-colors">
+                                Leer artículo completo
+                            </span>
+                            
+                            <div class="flex items-center justify-center w-8 h-8 rounded-full border border-transparent group-hover:border-slate-600 transition-colors duration-500">
+                                <svg class="w-4 h-4 text-slate-600 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Modales de Artículos -->
+<div id="modals-container">
+    {articles.map((article) => (
+        <div id={article.id} class="insight-modal fixed inset-0 z-[120] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 px-4 py-6 md:py-12">
+            
+            <!-- Backdrop Overlay (Clic para cerrar) -->
+            <div class="modal-overlay absolute inset-0 bg-slate-950/80 backdrop-blur-md cursor-pointer"></div>
+            
+            <!-- Contenido del Modal (data-lenis-prevent permite hacer scroll dentro del modal sin romper la web) -->
+            <div class="modal-content relative bg-slate-900 border border-slate-700 w-full max-w-3xl max-h-full overflow-y-auto p-8 md:p-12 transform scale-95 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl rounded-sm" data-lenis-prevent>
+                
+                <!-- Botón Cerrar (X) -->
+                <button class="modal-close absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <!-- Cabecera del Artículo -->
+                <div class="mb-8 md:mb-10 pr-12">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-bold bg-slate-950 px-3 py-1 border border-slate-800 rounded-sm">
+                            {article.category}
+                        </span>
+                        <span class="text-[10px] text-slate-500">{article.readTime}</span>
+                    </div>
+                    <h3 class="text-3xl md:text-5xl font-serif text-white leading-tight">
+                        {article.title}
+                    </h3>
+                </div>
+                
+                <!-- Cuerpo del Artículo -->
+                <div class="prose prose-invert prose-slate max-w-none">
+                    {article.content.map((paragraph) => (
+                        <p class="text-slate-300 font-light leading-relaxed mb-6 text-sm md:text-base">
+                            {paragraph}
+                        </p>
+                    ))}
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-slate-800/60 flex justify-between items-center">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-[0.2em]">G.L.R. Asociados</span>
+                    <a href="#contacto" class="modal-close-and-contact text-[10px] uppercase tracking-[0.2em] font-bold text-white hover:text-slate-300 transition-colors border-b border-slate-600 pb-1">
+                        Consultar mi caso
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    ))}
+</div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const triggers = document.querySelectorAll('.insight-trigger');
+        const modals = document.querySelectorAll('.insight-modal');
+        const body = document.body;
+
+        const openModal = (targetId: string) => {
+            const modal = document.getElementById(targetId);
+            const content = modal?.querySelector('.modal-content');
+            
+            if (modal && content) {
+                // Bloquea el scroll del fondo
+                body.style.overflow = 'hidden';
+                
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                
+                // Efecto de escala
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 50);
+            }
+        };
+
+        const closeModal = (modal: Element) => {
+            const content = modal.querySelector('.modal-content');
+            
+            if (content) {
+                content.classList.remove('scale-100', 'opacity-100');
+                content.classList.add('scale-95', 'opacity-0');
+            }
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                // Devuelve el scroll al fondo
+                body.style.overflow = '';
+            }, 300); // Espera a que termine la animación de escala
+        };
+
+        // Evento para abrir
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const target = trigger.getAttribute('data-target');
+                if (target) openModal(target);
+            });
+        });
+
+        // Eventos para cerrar
+        modals.forEach(modal => {
+            const overlay = modal.querySelector('.modal-overlay');
+            const closeBtn = modal.querySelector('.modal-close');
+            const contactBtn = modal.querySelector('.modal-close-and-contact');
+
+            overlay?.addEventListener('click', () => closeModal(modal));
+            closeBtn?.addEventListener('click', () => closeModal(modal));
+            
+            // Si hacen click en "Consultar mi caso" dentro del modal, lo cerramos y navegamos
+            contactBtn?.addEventListener('click', () => closeModal(modal));
+        });
+    });
+</script>

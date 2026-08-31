@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PracticeAreas from '../components/PracticeAreas.astro';
+import Methodology from '../components/Methodology.astro';
+import Insights from '../components/Insights.astro'; // <-- Importado
+import Team from '../components/Team.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="G.L.R. Asociados | Asistencia Jurídica Integral">
+    <Navbar />
+    <main class="grow">
+        <Hero />
+        <PracticeAreas />
+        <Methodology />
+        <Insights /> <!-- <-- Inyectado acá -->
+        <Team />
+    </main>
+    <Footer />
+</Layout>

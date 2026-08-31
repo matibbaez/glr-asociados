@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!-- Fondo oscuro (slate-950) con bordes redondeados tipo app -->
+    <rect width="512" height="512" rx="120" fill="#020617" />
+    
+    <!-- Borde interior sutil (slate-800) para darle profundidad -->
+    <rect x="16" y="16" width="480" height="480" rx="104" fill="none" stroke="#1e293b" stroke-width="8" />
+    
+    <!-- Tipografía Serif elegante centrada -->
+    <text 
+        x="52%" 
+        y="53%" 
+        dominant-baseline="middle" 
+        text-anchor="middle" 
+        font-family="Times New Roman, Georgia, serif" 
+        font-size="170" 
+        font-weight="bold" 
+        fill="#ffffff" 
+        letter-spacing="5">
+        GLR
+    </text>
+</svg>

@@ -1,0 +1,165 @@
+---
+---
+<!-- Header Principal: z-[110] CRÍTICO para que quede siempre por encima del menú móvil -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-[110] transition-all duration-500 border-b border-transparent py-6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        
+        <!-- Logo Textual -->
+        <a href="#" class="relative flex flex-col group">
+            <span class="text-white font-serif text-2xl lg:text-3xl font-bold tracking-widest leading-none">
+                G.L.R.
+            </span>
+            <span class="text-[7px] lg:text-[8px] font-sans tracking-[0.3em] text-slate-500 uppercase mt-1.5 font-bold transition-colors duration-500">
+                Asociados
+            </span>
+        </a>
+
+        <!-- Menú Desktop -->
+        <div class="hidden md:flex items-center gap-10">
+            <a href="#especialidades" class="group relative text-[10px] uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-2 overflow-hidden">
+                <span class="relative z-10">Especialidades</span>
+                <span class="absolute bottom-0 left-0 w-full h-[1px] bg-slate-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            </a>
+            <a href="#novedades" class="group relative text-[10px] uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-2 overflow-hidden">
+                <span class="relative z-10">Divulgación</span>
+                <span class="absolute bottom-0 left-0 w-full h-[1px] bg-slate-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            </a>
+            <a href="#contacto" class="group relative text-[10px] uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors py-2 overflow-hidden">
+                <span class="relative z-10">Directorio</span>
+                <span class="absolute bottom-0 left-0 w-full h-[1px] bg-slate-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            </a>
+            
+            <div class="w-[1px] h-4 bg-slate-800"></div>
+
+            <a href="#contacto" class="group flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white font-bold border border-slate-700 px-6 py-3 hover:bg-white hover:text-slate-950 transition-all duration-500 rounded-sm">
+                <span>Consulta</span>
+                <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Botón Menú Mobile (Hamburguesa geométrica precisa) -->
+        <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col justify-center items-end gap-[6px] focus:outline-none group">
+            <span id="line-1" class="w-7 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
+            <span id="line-2" class="w-5 h-[1.5px] bg-slate-400 group-hover:bg-white transition-all duration-300 origin-center"></span>
+            <span id="line-3" class="w-7 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
+        </button>
+
+    </div>
+</header>
+
+<!-- Menú Mobile Overlay: z-[100] (Queda por debajo del header para no tapar la "X") -->
+<div id="mobile-menu" class="fixed inset-0 bg-slate-950/98 backdrop-blur-2xl z-[100] flex flex-col justify-between opacity-0 pointer-events-none transition-all duration-500 pt-32 pb-12 px-6">
+    
+    <!-- Links Gigantes tipo App Premium -->
+    <nav class="flex flex-col gap-6 w-full mt-4">
+        <a href="#especialidades" class="mobile-link text-5xl md:text-6xl font-serif text-slate-400 hover:text-white transition-colors opacity-0 translate-y-8">
+            Especialidades<span class="text-slate-700">.</span>
+        </a>
+        <a href="#novedades" class="mobile-link text-5xl md:text-6xl font-serif text-slate-400 hover:text-white transition-colors opacity-0 translate-y-8">
+            Divulgación<span class="text-slate-700">.</span>
+        </a>
+        <a href="#contacto" class="mobile-link text-5xl md:text-6xl font-serif text-slate-400 hover:text-white transition-colors opacity-0 translate-y-8">
+            Directorio<span class="text-slate-700">.</span>
+        </a>
+    </nav>
+
+    <!-- Tarjeta de contacto rápido al pie del menú -->
+    <div class="mobile-link opacity-0 translate-y-8 flex flex-col gap-5 border-t border-slate-800/60 pt-8 mt-10">
+        <span class="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-bold">Asistencia Urgente</span>
+        <a href="#contacto" class="flex items-center justify-between text-white text-xs uppercase tracking-[0.15em] font-bold bg-slate-900 border border-slate-700 p-5 rounded-sm hover:bg-slate-800 transition-colors w-full max-w-sm">
+            <span>Contactar Socios</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const navbar = document.getElementById('navbar');
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line-1');
+        const line2 = document.getElementById('line-2');
+        const line3 = document.getElementById('line-3');
+        const links = document.querySelectorAll('.mobile-link');
+
+        let isMenuOpen = false;
+
+        const handleScroll = () => {
+            if (window.scrollY > 50 && !isMenuOpen) {
+                navbar?.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-slate-800/50', 'py-4', 'shadow-2xl');
+                navbar?.classList.remove('border-transparent', 'py-6');
+            } else if (!isMenuOpen) {
+                navbar?.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-slate-800/50', 'py-4', 'shadow-2xl');
+                navbar?.classList.add('border-transparent', 'py-6');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        const toggleMenu = () => {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                // Sacamos el fondo del header para que se funda con el menú
+                navbar?.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-slate-800/50', 'shadow-2xl');
+                navbar?.classList.add('border-transparent');
+
+                menu?.classList.remove('opacity-0', 'pointer-events-none');
+                menu?.classList.add('opacity-100', 'pointer-events-auto');
+                
+                // Animación matemática de la "X"
+                line1?.classList.add('rotate-45', 'translate-y-[7.5px]');
+                line2?.classList.add('opacity-0', 'translate-x-4');
+                line2?.classList.remove('w-5');
+                line3?.classList.add('-rotate-45', '-translate-y-[7.5px]');
+                
+                // Efecto cascada de los links gigantes
+                links.forEach((link, index) => {
+                    setTimeout(() => {
+                        link.classList.remove('opacity-0', 'translate-y-8');
+                    }, 150 + (index * 100));
+                });
+                
+                document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
+            } else {
+                handleScroll(); // Devuelve el fondo al header si había scroll
+
+                menu?.classList.remove('opacity-100', 'pointer-events-auto');
+                menu?.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Vuelve a hamburguesa
+                line1?.classList.remove('rotate-45', 'translate-y-[7.5px]');
+                line2?.classList.remove('opacity-0', 'translate-x-4');
+                line2?.classList.add('w-5');
+                line3?.classList.remove('-rotate-45', '-translate-y-[7.5px]');
+                
+                // Esconde los links
+                links.forEach((link) => {
+                    link.classList.add('opacity-0', 'translate-y-8');
+                });
+                
+                document.body.style.overflow = '';
+            }
+        };
+
+        // Prevenir eventos duplicados en Astro
+        btn?.replaceWith(btn.cloneNode(true));
+        const newBtn = document.getElementById('mobile-menu-btn');
+        newBtn?.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic en un link
+        links.forEach(link => {
+            if (link.tagName === 'A') {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMenu();
+                });
+            }
+        });
+    });
+</script>
